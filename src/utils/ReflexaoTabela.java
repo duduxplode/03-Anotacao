@@ -3,10 +3,10 @@ package utils;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 import anotacao.Campo;
 import modelo.SuperTabela;
-import modelo.Tabela;
 
 public class ReflexaoTabela {
 	private static Field getPkField(SuperTabela tab) {
@@ -91,5 +91,25 @@ public class ReflexaoTabela {
 	public static void setValue(SuperTabela<?> tab, Field field, Object value) {
 		String pkMethodName = "set"+getUCFirst(field.getName());
 		invokeMethod(tab,pkMethodName,value);
+	}
+
+	public static Boolean validarCamposObrigatorios(SuperTabela tab) {
+		// obter metadado do objeto SuperTabela
+		Class<?> cls = tab.getClass();
+		// obter nome dos atributos da classe
+		Field[] atributos = cls.getDeclaredFields();
+		// percorrer os atributos procurando pela anotacao @Campo
+		for (Field attr : atributos) {
+			if (attr.isAnnotationPresent(Campo.class)) {
+				Campo cmp = attr.getAnnotation(Campo.class);
+				if (cmp.isObrigatorio()) {
+					String pkMethodName = "get"+getUCFirst(attr.getName());
+					Object obj = invokeGetMethod(tab, pkMethodName);
+					if (Objects.isNull(obj) || obj.toString().isEmpty())
+						return false;
+				}
+			}
+		}
+		return true;
 	}
 }

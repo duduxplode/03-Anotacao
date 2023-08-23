@@ -2,16 +2,19 @@ package teste;
 
 import modelo.Profissional;
 import modelo.SuperTabela;
-import modelo.Tabela;
+import modelo.Amador;
 
 public class TesteTabels {
 	public static void main(String[] args) {
-		Tabela tab = new Tabela();
-		tab.setId(10);
-		tab.setNome("coisa");
-		printTableData(tab);
-		tab.setPk(20);
-		printTableData(tab);
+		Amador a = new Amador();
+		a.setId(10);
+		a.setNome("coisa");
+		printTableData(a);
+		a.setPk(20);
+		printTableData(a);
+		Amador a2 = new Amador();
+		a2.setId(500);
+		printTableData(a2);
 		Profissional p = new Profissional();
 		p.setCpf(11122233345L);
 		p.setNome("Profissional da alegria");
@@ -25,6 +28,7 @@ public class TesteTabels {
 		System.out.println("Table Name:"+tab.getTableName());
 		System.out.println("Tabela pknome:"+ tab.getPkName());
 		System.out.println("Valor PK:"+ tab.getPk());
+		System.out.println("Campos obrigatórios preenchidos:"+ tab.isCamposObrigatoriosPreenchidos());
 		System.out.println("------------------------------");
 	}
 }

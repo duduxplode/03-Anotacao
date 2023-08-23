@@ -1,8 +1,10 @@
 package modelo;
 
 import anotacao.Campo;
+import anotacao.Tabela;
 import utils.ReflexaoTabela;
 
+@Tabela(tabelaNome = "Profissional")
 public class Profissional extends SuperTabela<Long>{
 	@Campo(colunaNome="cpf",isPk=true, isObrigatorio=true)
 	private Long cpf;

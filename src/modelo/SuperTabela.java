@@ -20,8 +20,9 @@ public abstract class SuperTabela<TypePK> {
 	public Boolean isCamposObrigatoriosPreenchidos(){
 		// 1. utilize a classe de reflexão para determinar
 		// se os compos obrigatórios estão preenchidos
+		if (ReflexaoTabela.validarCamposObrigatorios(this)) return true;
 		// 2. Criar a anotação Tabela(name="dssss") para mudar
 		// o nome da tabela
-		return true;
+		return false;
 	}
 }

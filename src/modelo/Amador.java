@@ -1,8 +1,9 @@
 package modelo;
 
 import anotacao.Campo;
-
-public class Tabela extends SuperTabela<Integer>{
+import anotacao.Tabela;
+@Tabela(tabelaNome = "Amador")
+public class Amador extends SuperTabela<Integer>{
 	@Campo(colunaNome="super_ID",isPk=true, isObrigatorio=true)
 	private Integer id;
 	@Campo(colunaNome="txt_nome",isObrigatorio=true)
