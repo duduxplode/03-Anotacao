@@ -4,7 +4,7 @@ import anotacao.Campo;
 import anotacao.Tabela;
 import utils.ReflexaoTabela;
 
-@Tabela(tabelaNome = "Profissional")
+@Tabela(tabelaNome = "Engenheiro")
 public class Profissional extends SuperTabela<Long>{
 	@Campo(colunaNome="cpf",isPk=true, isObrigatorio=true)
 	private Long cpf;
@@ -26,10 +26,10 @@ public class Profissional extends SuperTabela<Long>{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	@Override
-	public String getTableName(){
-		//return ReflexaoTabela.getUCFirst(super.getTableName());
-		return "CoiSA";
-	}
+//	@Override
+//	public String getTableName(){
+//		//return ReflexaoTabela.getUCFirst(super.getTableName());
+//		return "CoiSA";
+//	}
 }
 

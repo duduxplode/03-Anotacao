@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.util.Objects;
 
 import anotacao.Campo;
+import anotacao.Tabela;
 import modelo.SuperTabela;
 
 public class ReflexaoTabela {
@@ -49,6 +50,16 @@ public class ReflexaoTabela {
 		Field pkField = getPkField(tab);
 		String pkMethodName = "get"+getUCFirst(pkField.getName());
 		return invokeGetMethod(tab, pkMethodName);
+	}
+
+	public static String getTableName(SuperTabela tab) {
+		Class<?> cls = tab.getClass();
+		String ret = null;
+		if (cls.isAnnotationPresent(Tabela.class)) {
+			Tabela tabela = cls.getAnnotation(Tabela.class);
+			ret = tabela.tabelaNome();
+		}
+		return ret;
 	}
 
 	private static void validarParametroTab(SuperTabela tab) {

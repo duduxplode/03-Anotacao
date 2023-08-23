@@ -12,9 +12,11 @@ public class TesteTabels {
 		printTableData(a);
 		a.setPk(20);
 		printTableData(a);
+
 		Amador a2 = new Amador();
 		a2.setId(500);
 		printTableData(a2);
+
 		Profissional p = new Profissional();
 		p.setCpf(11122233345L);
 		p.setNome("Profissional da alegria");
@@ -28,7 +30,12 @@ public class TesteTabels {
 		System.out.println("Table Name:"+tab.getTableName());
 		System.out.println("Tabela pknome:"+ tab.getPkName());
 		System.out.println("Valor PK:"+ tab.getPk());
-		System.out.println("Campos obrigatórios preenchidos:"+ tab.isCamposObrigatoriosPreenchidos());
+		System.out.println("Campos obrigatórios preenchidos:"+ boolToText(tab.isCamposObrigatoriosPreenchidos()));
 		System.out.println("------------------------------");
+	}
+
+	private static String boolToText(Boolean value) {
+		if (value) return "Sim";
+		return "Não";
 	}
 }
